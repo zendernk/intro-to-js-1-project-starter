@@ -1,5 +1,5 @@
 /* Create an array named products which you will use to add all of your product object literals that you create in the next step. */
-let products = [];
+
 /* Create 3 or more product objects using object literal notation 
    Each product should include five properties
    - name: name of product (string)
@@ -14,6 +14,30 @@ let products = [];
    - orange.jpg by Mae Mu
    - strawberry.jpg by Allec Gomes
 */
+
+let products = [
+  {
+    name: "Cherry",
+    price: 3.50,
+    quantity: 0,
+    productId: 100,
+    image: "starter/src/images/cherry.jpg"
+  },
+  {
+    name: "Orange",
+    price: 1.50,
+    quantity: 0,
+    productId: 101,
+    image: "starter/src/images/orange.jpg"
+  },
+  {
+    name: "Strawberry",
+    price: 6.50,
+    quantity: 0,
+    productId: 102,
+    image: "starter/src/images/strawberry.jpg"
+  }
+];
 
 /* Declare an empty array named cart to hold the items in the cart */
 
