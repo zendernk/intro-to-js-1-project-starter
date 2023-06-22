@@ -127,6 +127,34 @@ function removeProductFromCart(productId) {
   - pay will return a positive number if money should be returned to customer
 */
 
+
+let totalPaid = 0;
+
+function cartTotal() {
+  return cart.reduce((total, product) => total + (product.price * product.quantity), 0);
+}
+
+function emptyCart() {
+  cart = [];
+  products.forEach(product => product.quantity = 0);
+}
+
+function pay(amount) {
+  totalPaid += amount;
+  let totalCost = cartTotal();
+  let balance = totalPaid - totalCost;
+  if(balance < 0) {
+    // Money is still owed
+    return balance;
+  } else {
+    // Change needs to be returned to customer
+    emptyCart(); // Empty the cart after successful payment
+    totalPaid = 0; // Reset the total paid amount
+    return balance;
+  }
+}
+
+
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
 
