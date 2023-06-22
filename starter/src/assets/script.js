@@ -64,6 +64,57 @@ let products = [
   - removeProductFromCart should remove the product from the cart
 */
 
+
+let cart = [];
+
+function findProductById(productId) {
+  return products.find(product => product.productId === productId);
+}
+
+function findProductInCart(productId) {
+  return cart.find(product => product.productId === productId);
+}
+
+function addProductToCart(productId) {
+  let product = findProductById(productId);
+  if (product) {
+    let productInCart = findProductInCart(productId);
+    if (productInCart) {
+      productInCart.quantity++;
+    } else {
+      let newProduct = { ...product };
+      newProduct.quantity = 1;
+      cart.push(newProduct);
+    }
+  }
+}
+
+function increaseQuantity(productId) {
+  let productInCart = findProductInCart(productId);
+  if (productInCart) {
+    productInCart.quantity++;
+  }
+}
+
+function decreaseQuantity(productId) {
+  let productInCart = findProductInCart(productId);
+  if (productInCart) {
+    productInCart.quantity--;
+    if (productInCart.quantity === 0) {
+      cart = cart.filter(product => product.productId !== productId);
+    }
+  }
+}
+
+function removeProductFromCart(productId) {
+  let productInCart = findProductInCart(productId);
+  if (productInCart) {
+    productInCart.quantity = 0;
+    cart = cart.filter(product => product.productId !== productId);
+  }
+}
+
+
 /* Create a function named cartTotal that has no parameters
   - cartTotal should iterate through the cart to get the total of all products
   - cartTotal should return the sum of the products in the cart
